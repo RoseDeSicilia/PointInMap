@@ -64,6 +64,17 @@ public class GraphDisplay extends JPanel implements MouseMotionListener
             else description = "";
         ////////////////////////////////////////////////////////////////////////
         
+        
+        
+        for (GeometricObject polygon : gArray) {
+        	
+        	if(((Polygon)polygon).boundingRectangle().pointInsideRectangle(p)) {
+        		//point is inside bounding rectangle so now update the description of where you are
+        		description = ((Polygon)polygon).getName();
+        	}
+        	
+        }
+        
         repaint();
     }
     

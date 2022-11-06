@@ -12,6 +12,7 @@ public class Polygon extends GeometricObject
     private Point[] vertexList; //list of vertices in counterclockwise order
     private int size;   //capacity of array vertexList
     private int vertNumber; //number of vertices of this polygon
+    private String name;
 
     /**
      * Instantiates a Polygon object. The polygon vertices are given in an array
@@ -38,36 +39,42 @@ public class Polygon extends GeometricObject
     }
 
 
+    /***
+     * finds the bounding rectangle for this polygon 
+     * made up of the min and max x and y coordinates 
+     * @return
+     */
     public Rectangle boundingRectangle(){
-        double minX = Double.MAX_VALUE;
-        double minY = Double.MAX_VALUE;
-        double maxX = Double.MIN_VALUE;
-        double maxY = Double.MIN_VALUE;
+    	
+//        double minX = Double.MAX_VALUE;
+//        double minY = Double.MAX_VALUE;
+//        double maxX = Double.MIN_VALUE;
+//        double maxY = Double.MIN_VALUE;
+//
+//        for(Point p : vertexList){
+//            if(p.getX() < minX)
+//                minX = p.getX();
+//            if(p.getY() < minY)
+//                minY = p.getY();
+//            if(p.getX() > maxX)
+//                maxX = p.getX();
+//            if(p.getY() > maxY)
+//                maxY = p.getY();
+//        }
+//
+//        System.out.println(minX);
+//        System.out.println(minY);
+//        System.out.println(maxX);
+//        System.out.println(maxY);
 
-        for(Point p : vertexList){
-            if(p.getX() < minX)
-                minX = p.getX();
-            if(p.getY() < minY)
-                minY = p.getY();
-            if(p.getX() > maxX)
-                maxX = p.getX();
-            if(p.getY() > maxY)
-                maxY = p.getY();
-        }
-
-        System.out.println(minX);
-        System.out.println(minY);
-        System.out.println(maxX);
-        System.out.println(maxY);
-
-
-        Point p1 = new Point(minX, minY);
-        Point p2 = new Point(maxX, maxY);
+        Point p1 = new Point(smallestX(), smallestY());
+        Point p2 = new Point(greatestX(), greatestY());
 
         Rectangle r = new Rectangle(p1, p2);
 
         return r;
     }
+    
     /**
      * Adds a vertex as the last one in the sequence of vertices. Vertex array
      * will be expanded to double its size if vertex cannot be added because
@@ -160,6 +167,10 @@ public class Polygon extends GeometricObject
         return vertices;
     }
         
+    public String getName() {
+    	return name;
+    }
+    
     /**
      * Determines the greatest x.
      *

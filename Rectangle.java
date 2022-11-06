@@ -69,6 +69,15 @@ public class Rectangle extends GeometricObject {
                 begin.getY() : end.getY();
     }
 
+    public boolean pointInsideRectangle(Point p) {
+    	
+    	if(p.getX() > smallestX() && p.getX() < greatestX() && p.getY() > smallestY() && p.getY() < greatestY()) {
+    		return true;
+    	}
+
+    	return false;
+    }
+    
     /**
      * Translates this rectangle by given vector.
      */
